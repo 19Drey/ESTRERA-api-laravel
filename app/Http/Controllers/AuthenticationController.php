@@ -25,6 +25,8 @@ class AuthenticationController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id' => 3, // Teacher
+            'user_status_id' => 1, // Active
         ]);
 
         return response()->json(['message' => 'User created succesfully!', 'user' => $user]);
