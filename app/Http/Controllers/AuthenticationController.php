@@ -46,4 +46,10 @@ class AuthenticationController extends Controller
 
         return response()->json(['message' => 'User logged in succesfully!', 'user' => $user, 'token' => $token]);
     }
+
+    public function logout(Request $request){
+        $request->user()->tokens()->delete();
+
+        return response()->json(['message' => 'User logged out succesfully!']);
+    }
 }
