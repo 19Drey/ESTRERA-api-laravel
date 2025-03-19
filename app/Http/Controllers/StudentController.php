@@ -12,4 +12,28 @@ class StudentController extends Controller
 
         return response()->json(['students' => $students]);
     }  
+
+    public function addStudent(Request $request){
+        $request->validate([
+            'first_name' => ['required', 'string', 'max:255'],
+            'middle_name' => ['nullable', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'id_number' => ['nullable', 'string', 'max:255', 'unique:students'],
+            'course_id' => ['required', 'exists:courses,id'],
+            'year_level_id' => ['required', 'exists:year_levels,id'],
+            'section_id' => ['required', 'exists:sections,id'],
+        ]);
+
+        $student = Student::create([
+            'first_name' => $request->first_name,
+            'middle_name' => $request->middle_name,
+            'last_name' => $request->last_name,
+            'id_number' => $request->id_number,
+            'course_id' => $request->course_id,
+            'year_level_id' => $request->year_level_id,
+            'section_id' => $request->section_id,
+        ]);
+
+        return response()->json(['message' => 'Student added successfully', 'student' => $student]);
+    }
 }
