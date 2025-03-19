@@ -22,5 +22,6 @@ Route::post('/login', [AuthenticationController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('/get-users', [UserController::class, 'getUsers']);
     Route::post('/add-user', [UserController::class, 'addUser']);
+    Route::put('/edit-user/{id}', [UserController::class, 'editUser']);
     Route::post('/logout', [AuthenticationController::class, 'logout']);
 });
