@@ -50,6 +50,10 @@ class StudentController extends Controller
 
         $student = Student::find($id);
 
+        if(!$student){
+            return response()->json(['message' => 'Student not found'], 404);
+        }
+
         $student->update([
             'first_name' => $request->first_name,
             'middle_name' => $request->middle_name,
@@ -62,4 +66,16 @@ class StudentController extends Controller
 
         return response()->json(['message' => 'Student updated successfully', 'student' => $student ]);
     }   
+
+    public function deleteStudent($id){
+        $student = Student::find($id);
+
+        if(!$student){
+            return response()->json(['message' => 'Student not found'], 404);
+        }
+
+        $student->delete();
+
+        return response()->json(['message' => 'Student deleted successfully']);
+    }
 }

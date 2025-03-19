@@ -50,6 +50,10 @@ class UserController extends Controller
 
         $user = User::find($id);
 
+        if(!$user){
+            return response()->json(['message' => 'User not found!'], 404);
+        }
+
         $user->update([
             'first_name' => $request->first_name,
             'middle_name' => $request->middle_name,
