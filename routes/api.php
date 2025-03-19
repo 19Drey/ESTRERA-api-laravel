@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->group(function(){
 
     Route::get('/get-students', [StudentController::class, 'getStudents']);
     Route::post('/add-student', [StudentController::class, 'addStudent']);
+    Route::put('/edit-student/{id}', [StudentController::class, 'editStudent']);
 
     Route::post('/logout', [AuthenticationController::class, 'logout']);
 });
