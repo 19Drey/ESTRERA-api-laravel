@@ -15,7 +15,7 @@ class AuthenticationController extends Controller
             'middle_name' => ['nullable', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string'],
+            'password' => ['required', 'string', 'min:8'],
             'confirm_password' => ['required', 'same:password'],
         ]);
 

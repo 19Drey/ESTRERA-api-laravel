@@ -20,8 +20,7 @@ class UserController extends Controller
             'middle_name' => ['nullable', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string'],
-            'confirm_password' => ['required', 'same:password'],
+            'password' => ['required', 'string', 'min:8'],
             'role_id' => ['required', 'exists:roles,id'],
             'user_status_id' => ['required', 'exists:user_statuses,id'],
         ]);
