@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\UserStatus;
 
 return new class extends Migration
 {
@@ -12,20 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_statuses', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
-
-        $userStatuses = [
-            ['name' => 'Active'],
-            ['name' => 'Inactive'],
-        ];
-
-        foreach($userStatuses as $userStatus){
-            UserStatus::create($userStatus);
-        }
     }
 
     /**
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_statuses');
+        Schema::dropIfExists('users');
     }
 };
