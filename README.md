@@ -29,8 +29,6 @@ Payroll Management System
 5.2 Manage Tax Rates
 5.3 Set Up Notifications
 
-(Note: An external URL was present in the document but appears unrelated to the features list.)
-
 6. User Management
 6.1 Add User
 6.2 View User Details
